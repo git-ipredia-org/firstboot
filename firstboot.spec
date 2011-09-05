@@ -3,8 +3,8 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 16.1
-Release: 2%{?dist}
+Version: 16.2
+Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -109,6 +109,9 @@ fi
 
 
 %changelog
+* Mon Sep 05 2011 Martin Gracik <mgracik@redaht.com> 16.2-1
+- Translation updates (#734305)
+
 * Tue Jul 26 2011 Martin Gracik <mgracik@redhat.com> 16.1-2
 - Enable firstboot after install (#725566)
 
