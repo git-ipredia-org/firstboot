@@ -357,6 +357,11 @@ class Interface(object):
         currentModule = self.moduleList[self._control.currentPage]
 
         currentModule.initializeUI()
+        if currentModule.vbox is None:
+            err = _("Module %s did not setup it's UI properly") % currentModule.title
+            logging.error(err)
+            raise RuntimeError, err
+
         self.rightBox.pack_start(currentModule.vbox)
         currentModule.focus()
         self.win.show_all()
