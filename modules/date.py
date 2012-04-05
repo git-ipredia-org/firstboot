@@ -35,7 +35,7 @@ from scdMainWindow import scdMainWindow
 class moduleClass(Module):
     def __init__(self):
         Module.__init__(self)
-        self.priority = 100
+        self.priority = 99
         self.sidebarTitle = N_("Date and Time")
         self.title = N_("Date and Time")
         self.icon = "system-config-date.png"
