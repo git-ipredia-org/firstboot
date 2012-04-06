@@ -358,7 +358,7 @@ class Interface(object):
 
         currentModule.initializeUI()
         if currentModule.vbox is None:
-            err = _("Module %s did not setup it's UI properly") % currentModule.title
+            err = _("Module %s did not setup its UI properly") % currentModule.title
             logging.error(err)
             raise RuntimeError, err
 
