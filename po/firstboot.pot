@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-13 11:31+0200\n"
+"POT-Creation-Date: 2012-06-26 09:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,38 +31,43 @@ msgstr ""
 msgid "The system must now reboot for some of your selections to take effect."
 msgstr ""
 
-#: ../firstboot/interface.py:243
+#: ../firstboot/interface.py:257
 msgid "_Back"
 msgstr ""
 
-#: ../firstboot/interface.py:250
+#: ../firstboot/interface.py:264
 msgid "_Forward"
 msgstr ""
 
-#: ../firstboot/interface.py:278
+#: ../firstboot/interface.py:292
 #, python-format
 msgid "Module %s raised an exception while loading: %s"
 msgstr ""
 
-#: ../firstboot/interface.py:282
+#: ../firstboot/interface.py:296
 #, python-format
 msgid "Module %s did not set up its UI properly."
 msgstr ""
 
-#: ../firstboot/interface.py:288
+#: ../firstboot/interface.py:302
 #, python-format
 msgid "Module %s raised an exception while rendering: %s"
 msgstr ""
 
-#: ../firstboot/interface.py:357 ../firstboot/interface.py:358
+#: ../firstboot/interface.py:361
+#, python-format
+msgid "Module %s did not setup its UI properly"
+msgstr ""
+
+#: ../firstboot/interface.py:376 ../firstboot/interface.py:377
 msgid "moveToPage must be given a module title or page number."
 msgstr ""
 
-#: ../firstboot/interface.py:442
+#: ../firstboot/interface.py:461
 msgid "Unable to create the screenshot dir; skipping."
 msgstr ""
 
-#: ../firstboot/interface.py:482 ../firstboot/interface.py:483
+#: ../firstboot/interface.py:501 ../firstboot/interface.py:502
 #, python-format
 msgid "No module exists with the title %s."
 msgstr ""
