@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 17.3
+Version: 17.4
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -103,6 +103,9 @@ fi
 
 
 %changelog
+* Tue Jun 26 2012 Martin Gracik <mgracik@redhat.com> 17.4-1
+- new package built with tito
+
 * Thu May 17 2012 Brian C. Lane <bcl@redhat.com> 17.3-1
 - Let WM place the window (#821077) (bcl)
 - Fix no modules error handling (mgracik)
