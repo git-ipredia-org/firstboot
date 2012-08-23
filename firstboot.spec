@@ -28,6 +28,7 @@ Requires(post): systemd-units systemd-sysv chkconfig
 Requires(preun): systemd-units
 Requires(postun): systemd-units
 Requires: firstboot(windowmanager)
+Requires: libreport-python
 
 %define debug_package %{nil}
 

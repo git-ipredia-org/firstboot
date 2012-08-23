@@ -36,20 +36,62 @@ from firstboot.constants import *
 from firstboot.config import *
 
 import meh
-import meh.handler
 import meh.dump
 
+import gettext
+_ = lambda x: gettext.ldgettext("firstboot", x)
 
-def exception_handler(type, value, tb):
-    fd, path = tempfile.mkstemp(prefix='firstboot-', suffix='.trace')
-    fo = os.fdopen(fd, 'w')
-    traceback.print_exception(type, value, tb, None, fo)
-    fo.close()
+def exception_handler(type, value, tb, obj):
+    # write exception to a file
+    fd, path = tempfile.mkstemp(prefix='/var/tmp/firstboot-', suffix='.trace')
+    exception_lines = traceback.format_exception(type, value, tb)
+    os.write(fd, "".join(exception_lines))
+    os.close(fd)
 
-sys.excepthook = exception_handler
+    meh_conf = meh.Config(programName='firstboot',
+                              programVersion='@VERSION@')
+
+    dump_obj = meh.dump.ExceptionDump((type, value, tb), meh_conf)
+    exn_dump = dump_obj.traceback_and_object_dump(obj)
+
+    fd, path = tempfile.mkstemp(prefix='firstboot-tb-')
+    os.write(fd, exn_dump)
+    os.close(fd)
+
+    # that's basically what python-meh's Save button does, except that the
+    # following code just creates directories ABRT wants for reporting bug
+    import report
+    params = dict()
+    params.update(dump_obj.environment_info)
+
+    params.setdefault('component', 'firstboot')
+    params.setdefault('package', 'firstboot-@VERSION@')
+
+    params['hashmarkername'] = 'firstboot'
+    params['duphash'] = dump_obj.hash
+    params['reason'] = dump_obj.desc
+    params['description'] = 'Traceback from firstboot:\n%s' % str(dump_obj)
+    params['firstboot-tb'] = exn_dump
+    params['uid'] = "%d" % os.geteuid()
+
+    problem_data = report.createPythonUnhandledExceptionSignature(**params)
+
+    problem_data.create_dump_dir('/var/spool/abrt')
+
+    print _('Unhandled exception in firstboot occured.')
+    print _('Bugreport directory was created and once you login, ABRT should\n'
+            'let you file a bug. (Don\'t forget to check "Show all problems")')
+    answer = raw_input (_('Do you want to start /usr/bin/setup so that you can\n'
+                          'create your user account? [Y/n] '))
+
+    if not answer.lower() in [_('n'), _('no')]:
+        os.system('/usr/bin/setup')
 
 
 if __name__ == '__main__':
+    # set up exception handling first
+    sys.excepthook = lambda ty, value, tb: exception_handler(ty, value, tb,
+                                                              config)
 
     # only root can do this
     if not os.geteuid() == 0:
@@ -101,20 +143,11 @@ if __name__ == '__main__':
 
     # these modules import gtk, so we need to have a display first
     import firstboot.interface
-    import meh.ui.gui
 
     # XXX set up the interface
     config.frontend = frontend
     config.interface = firstboot.interface.Interface(opts.autoscreenshot,
                                                      opts.test)
-
-    # XXX set up meh
-    handler_conf = meh.Config(programName='firstboot',
-                              programVersion='@VERSION@')
-    handler = meh.handler.ExceptionHandler(handler_conf,
-                                           meh.ui.gui.GraphicalIntf(),
-                                           meh.dump.ExceptionDump)
-    handler.install(config)
 
     # load modules
     loader = firstboot.loader.Loader()
