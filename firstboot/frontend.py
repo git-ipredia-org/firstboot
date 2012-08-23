@@ -42,11 +42,14 @@ class Frontend:
         self.wm_pid = None
 
     def set_lang(self):
-        i18n = shlex.split(open(I18N).read())
-        i18n = dict(item.split('=') for item in i18n)
-        if 'LANG' in i18n:
-            log.info('setting LANG to %s', i18n['LANG'])
-            os.environ['LANG'] = i18n['LANG']
+        try:
+            i18n = shlex.split(open(I18N).read())
+            i18n = dict(item.split('=') for item in i18n)
+            if 'LANG' in i18n:
+                log.info('setting LANG to %s', i18n['LANG'])
+                os.environ['LANG'] = i18n['LANG']
+        except:
+            os.environ.setdefault("LANG", "en_US.UTF-8")
 
     def startx(self):
         def sigusr1_handler(num, frame):
