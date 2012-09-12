@@ -365,6 +365,7 @@ class moduleClass(Module):
 
         self.is_admin = gtk.CheckButton(_("Add to Administrators group"))
         self.is_admin.set_alignment(0.0, 0.5)
+        self.is_admin.set_active(True) # workaround for F18 alpha
         table.attach(self.is_admin, 2, 3, 1, 2, gtk.FILL)
 
         self.vbox.pack_start(table, False)
