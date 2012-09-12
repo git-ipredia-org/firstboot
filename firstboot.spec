@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 18.2
+Version: 18.3
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -104,6 +104,11 @@ fi
 
 
 %changelog
+* Wed Sep 12 2012 Martin Sivak <msivak@redhat.com> 18.3-1
+- patch systemd service to refer to display-manager.service
+  not prefdm.service (awilliam@redhat.com)
+- Make the created user administrator by default (#856194)
+
 * Thu Aug 23 2012 Brian C. Lane <bcl@redhat.com> 18.2-1
 - Fix traceback when /etc/sysconfig/i18n doesn't exist (#849967)
   (vpodzime@redhat.com)
