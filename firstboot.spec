@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 18.3
+Version: 18.4
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -100,6 +100,11 @@ fi
 
 
 %changelog
+* Wed Sep 19 2012 Martin Sivak <msivak@redhat.com> 18.4-1
+- Scriptlets replaced with new systemd macros (#850112) (vpavlin@redhat.com)
+- When creating first user in system with no root, force the user to be admin
+  (#856194) (msivak@redhat.com)
+
 * Wed Sep 12 2012 Martin Sivak <msivak@redhat.com> 18.3-1
 - patch systemd service to refer to display-manager.service
   not prefdm.service (awilliam@redhat.com)
