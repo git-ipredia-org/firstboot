@@ -365,7 +365,15 @@ class moduleClass(Module):
 
         self.is_admin = gtk.CheckButton(_("Add to Administrators group"))
         self.is_admin.set_alignment(0.0, 0.5)
-        self.is_admin.set_active(True) # workaround for F18 alpha
+
+        # check if we have valid admin account
+        root = self.admin.lookupUserById(0)
+        wheel_members = self.admin.enumerateUsersByGroup("wheel")
+
+        if self.admin.userIsLocked(root) and len(wheel_members) == 0:
+            self.is_admin.set_active(True) # this user will be admin by default
+            self.is_admin.set_sensitive(False) # and user cannot change this
+        
         table.attach(self.is_admin, 2, 3, 1, 2, gtk.FILL)
 
         self.vbox.pack_start(table, False)
