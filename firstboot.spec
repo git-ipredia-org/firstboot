@@ -58,7 +58,7 @@ if [ $1 -ne 2 -a ! -f /etc/sysconfig/firstboot ]; then
   if [ "$platform" = "s390" -o "$platform" = "s390x" ]; then
     echo "RUN_FIRSTBOOT=YES" > /etc/sysconfig/firstboot
   else
-    systemctl enable firstboot-graphical.service >/dev/null 2>&1 || :
+    %systemd_post firstboot-graphical.service
   fi
 fi
 
@@ -66,15 +66,11 @@ fi
 if [ $1 = 0 ]; then
   rm -rf /usr/share/firstboot/*.pyc
   rm -rf /usr/share/firstboot/modules/*.pyc
-  /bin/systemctl --no-reload firstboot-graphical.service > /dev/null 2>&1 || :
-  /bin/systemctl stop firstboot-graphical.service > /dev/null 2>&1 || :
 fi
+%systemd_preun firstboot-graphical.service
 
 %postun
-/bin/systemctl daemon-reload > /dev/null 2>&1 || :
-if [ $1 -ge 1 ] ; then
-    /bin/systemctl try-restart firstboot-graphical.service > /dev/null 2>&1 || :
-fi
+%systemd_postun_with_restart firstboot-graphical.service
 
 %triggerun -- firstboot < 1.117
 %{_bindir}/systemd-sysv-convert --save firstboot > /dev/null 2>&1 ||:
