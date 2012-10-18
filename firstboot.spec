@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 18.4
+Version: 18.5
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -100,6 +100,9 @@ fi
 
 
 %changelog
+* Thu Oct 18 2012 Martin Sivak <msivak@redhat.com> 18.5-1
+- Add interlingua localization (nikka@fedoraproject.org)
+
 * Wed Sep 19 2012 Martin Sivak <msivak@redhat.com> 18.4-1
 - Scriptlets replaced with new systemd macros (#850112) (vpavlin@redhat.com)
 - When creating first user in system with no root, force the user to be admin
