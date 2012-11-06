@@ -38,7 +38,8 @@ VT = 'vt1'
 WMS = ('metacity',
        'kwin',
        'xfwm4',
-       'openbox')
+       'openbox',
+       'marco')
 
 XRES = '/etc/X11/Xresources'
 
