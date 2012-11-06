@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 18.5
+Version: 18.6
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -100,6 +100,9 @@ fi
 
 
 %changelog
+* Tue Nov 06 2012 Martin Sivak <msivak@redhat.com> 18.6-1
+- Add support for MATE's window manager (#873342) (msivak@redhat.com)
+
 * Thu Oct 18 2012 Martin Sivak <msivak@redhat.com> 18.5-1
 - Add interlingua localization (nikka@fedoraproject.org)
 
