@@ -528,4 +528,8 @@ class moduleClass(Module):
 
     def _runSCU(self, *args):
         reload(mainWindow)
-        win = mainWindow.mainWindow(firstboot=True)
+        try:
+            win = mainWindow.mainWindow(firstboot=True)
+        except SystemExit:
+            pass
+        
