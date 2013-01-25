@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 18.6
+Version: 18.7
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -91,7 +91,7 @@ fi
 %{_datadir}/firstboot/modules/eula.py*
 %{_datadir}/firstboot/modules/welcome.py*
 %{_datadir}/firstboot/themes/default/*
-/lib/systemd/system/firstboot-graphical.service
+%{_unitdir}/firstboot-graphical.service
 %ifarch s390 s390x
 %dir %{_sysconfdir}/profile.d
 %{_sysconfdir}/profile.d/firstboot.sh
@@ -100,6 +100,9 @@ fi
 
 
 %changelog
+* Fri Jan 25 2013 Martin Sivak <msivak@redhat.com> 18.7-1
+- Use proper systemd macro for unit files location (#883995) (msivak@redhat.com)
+
 * Tue Nov 06 2012 Martin Sivak <msivak@redhat.com> 18.6-1
 - Add support for MATE's window manager (#873342) (msivak@redhat.com)
 
