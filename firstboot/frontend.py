@@ -95,10 +95,6 @@ class Frontend:
             import gtk
             os.write(wr, '#')
 
-            kbd = keyboard.Keyboard()
-            kbd.read()
-            kbd.activate()
-
             gtk.main()
             os._exit(0)
 
