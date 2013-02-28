@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 18.7
+Version: 19.1
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -90,6 +90,10 @@ fi
 
 
 %changelog
+* Thu Feb 28 2013 Martin Sivak <msivak@redhat.com> 19.1-1
+- Remove all modules that are going to be provided by anaconda and initial-
+  setup (msivak@redhat.com)
+
 * Fri Jan 25 2013 Martin Sivak <msivak@redhat.com> 18.7-1
 - Use proper systemd macro for unit files location (#883995) (msivak@redhat.com)
 
