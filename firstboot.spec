@@ -18,12 +18,7 @@ BuildRequires: gettext
 BuildRequires: python-devel, python-setuptools-devel
 BuildRequires: systemd-units
 Requires: pygtk2, python
-Requires: setuptool, libuser-python, system-config-date
-Requires: system-config-users >= 1.2.111-1
-Requires: authconfig-gtk, python-meh
-Requires: system-config-keyboard
-Requires: python-ethtool
-Requires: python-pwquality
+Requires: python-meh
 Requires(post): systemd-units systemd-sysv chkconfig
 Requires(preun): systemd-units
 Requires(postun): systemd-units
@@ -46,7 +41,6 @@ a series of steps that allows for easier configuration of the machine.
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} SITELIB=%{python_sitelib} install
-rm %{buildroot}/%{_datadir}/firstboot/modules/additional_cds.py*
 %find_lang %{name}
 
 %clean
@@ -86,10 +80,6 @@ fi
 %dir %{_datadir}/firstboot/themes/default
 %{python_sitelib}/*
 %{_sbindir}/firstboot
-%{_datadir}/firstboot/modules/create_user.py*
-%{_datadir}/firstboot/modules/date.py*
-%{_datadir}/firstboot/modules/eula.py*
-%{_datadir}/firstboot/modules/welcome.py*
 %{_datadir}/firstboot/themes/default/*
 %{_unitdir}/firstboot-graphical.service
 %ifarch s390 s390x
