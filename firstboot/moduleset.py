@@ -110,8 +110,9 @@ class ModuleSet:
             # XXX
             reconfig = True if mode == MODE_RECONFIG else False
 
-            from firstboot.loader import load_modules
-            self.moduleList = load_modules(self.path, reconfig)
+            from firstboot.loader import Loader
+            loader = Loader()
+            self.moduleList = loader.load_modules(self.path, reconfig)
 
     def needsNetwork(self):
         """Does this module set require the network to be active in order to
