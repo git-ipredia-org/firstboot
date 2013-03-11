@@ -101,7 +101,7 @@ class Loader:
             # skip empty module sets
             if isinstance(modobj, ModuleSet):
                 modobj.loadModules(mode=reconfig)
-                if not obj.moduleList:
+                if not modobj.moduleList:
                     log.error('module set is empty')
                     continue
 
