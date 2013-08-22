@@ -13,6 +13,7 @@ Source0: %{name}-%{version}.tar.gz
 License: GPLv2+
 Group: System Environment/Base
 ExclusiveOS: Linux
+BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: gettext
 BuildRequires: python-devel, python-setuptools-devel
