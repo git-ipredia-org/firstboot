@@ -27,8 +27,6 @@ import subprocess
 
 from .constants import *
 
-from system_config_keyboard import keyboard
-
 
 # set up logging
 logging.basicConfig(level=logging.DEBUG)
