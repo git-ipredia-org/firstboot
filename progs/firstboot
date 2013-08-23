@@ -41,6 +41,8 @@ import meh.dump
 import gettext
 _ = lambda x: gettext.ldgettext("firstboot", x)
 
+ABRT_DIR = "/var/tmp/abrt"
+
 def exception_handler(type, value, tb, obj):
     # write exception to a file
     fd, path = tempfile.mkstemp(prefix='/var/tmp/firstboot-', suffix='.trace')
@@ -76,7 +78,7 @@ def exception_handler(type, value, tb, obj):
 
     problem_data = report.createPythonUnhandledExceptionSignature(**params)
 
-    problem_data.create_dump_dir('/var/spool/abrt')
+    problem_data.create_dump_dir(ABRT_DIR)
 
     print _('Unhandled exception in firstboot occured.')
     print _('Bugreport directory was created and once you login, ABRT should\n'
