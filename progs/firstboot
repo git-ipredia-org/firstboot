@@ -156,16 +156,13 @@ if __name__ == '__main__':
     modules = loader.load_modules(module_dir=opts.module_dir,
                                   reconfig=opts.reconfig)
 
-    if not modules:
-        err = 'no modules found'
-        raise RuntimeError(err)
-
-    # TODO rewrite the interface
-    config.interface.moduleList = modules
-    config.interface.createMainWindow()
-    config.interface.createScreens()
-    config.interface.createSidebar()
-    config.interface.run()
+    if modules:
+        # TODO rewrite the interface
+        config.interface.moduleList = modules
+        config.interface.createMainWindow()
+        config.interface.createScreens()
+        config.interface.createSidebar()
+        config.interface.run()
 
     if frontend is not None:
         frontend.kill()
