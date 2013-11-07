@@ -4,11 +4,11 @@ Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
 Version: 19.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.bz2
 
 License: GPLv2+
 Group: System Environment/Base
@@ -91,7 +91,7 @@ fi
 
 
 %changelog
-* Thu Nov 07 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.4-1
+* Thu Nov 07 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.4-2
 - Don't panic if there are no modules found (#1026941) (vpodzime)
 
 * Tue Aug 27 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.3-1
