@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 19.3
+Version: 19.4
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -91,6 +91,9 @@ fi
 
 
 %changelog
+* Thu Nov 07 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.4-1
+- Don't panic if there are no modules found (#1026941) (vpodzime)
+
 * Tue Aug 27 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.3-1
 - Run after the initial-setup-graphical.service (if enabled) (vpodzime)
 - ABRT now uses a different directory for problem data (#952633) (vpodzime)

@@ -15,7 +15,7 @@ if os.uname()[4].startswith('s390'):
     data_files.append(('/etc/profile.d', ['scripts/firstboot.sh']))
     data_files.append(('/etc/profile.d', ['scripts/firstboot.csh']))
 
-setup(name='firstboot', version='1.118',
+setup(name='firstboot', version='19.4',
       description='Post-installation configuration utility',
       author='Martin Gracik', author_email='mgracik@redhat.com',
       url='http://fedoraproject.org/wiki/FirstBoot',
