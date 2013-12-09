@@ -84,7 +84,7 @@ class Loader:
                 continue
 
             # skip modules that require network if it's not active
-            if not self._has_network and modobj.needsNetwork():
+            if not self._has_network() and modobj.needsNetwork():
                 log.error('module requires active network connection')
                 continue
 
