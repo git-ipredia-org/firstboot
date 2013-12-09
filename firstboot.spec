@@ -3,8 +3,8 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 19.4
-Release: 2%{?dist}
+Version: 19.5
+Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
 # within this srpm.
@@ -91,6 +91,9 @@ fi
 
 
 %changelog
+* Mon Dec 09 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.5-1
+- Fix missing Loader._needs_network call (#1033696) (alikins@redhat.com)
+
 * Thu Nov 07 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.4-2
 - Don't panic if there are no modules found (#1026941) (vpodzime)
 
