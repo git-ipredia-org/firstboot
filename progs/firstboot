@@ -97,7 +97,7 @@ if __name__ == '__main__':
 
     # only root can do this
     if not os.geteuid() == 0:
-        print >> sys.stderr, 'only root can do this'
+        print >> sys.stderr, _('only root can do this')
         sys.exit(1)
 
     parser = optparse.OptionParser()
