@@ -156,13 +156,14 @@ if __name__ == '__main__':
     modules = loader.load_modules(module_dir=opts.module_dir,
                                   reconfig=opts.reconfig)
 
+    reboot_required = False
     if modules:
         # TODO rewrite the interface
         config.interface.moduleList = modules
         config.interface.createMainWindow()
         config.interface.createScreens()
         config.interface.createSidebar()
-        config.interface.run()
+        reboot_required = config.interface.run()
 
     if frontend is not None:
         frontend.kill()
@@ -176,3 +177,6 @@ if __name__ == '__main__':
                 os.unlink('/etc/reconfigSys')
             except OSError:
                 pass
+
+    if reboot_required:
+        os.system("/sbin/reboot")

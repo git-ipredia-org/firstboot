@@ -28,6 +28,9 @@ from firstboot.moduleset import *
 import gettext
 _ = lambda x: gettext.ldgettext("firstboot", x)
 
+# flag telling if reboot is required or not when done
+reboot_required = False
+
 class Control:
     def __init__(self):
         self.currentPage = 0
@@ -170,6 +173,8 @@ class Interface(object):
            effect, displaying a dialog if so.  This method immediately reboots
            the system.
         """
+
+        global reboot_required
         needReboot = False
 
         for module in self.moduleList:
@@ -186,7 +191,10 @@ class Interface(object):
         dlg.show_all()
         dlg.run()
         dlg.destroy()
-        os.system("/sbin/reboot")
+
+        # set the reboot flag and terminate the Gtk main loop
+        reboot_required = True
+        gtk.main_quit()
 
     def fit_window_to_screen(self):
         # need this to get the monitor
@@ -447,10 +455,14 @@ class Interface(object):
            method does not exit until the UI is unloaded.  From this point on,
            all interaction must take place in callbacks.
         """
+
         self.displayModule()
         self.win.present()
         self.nextButton.grab_focus()
         gtk.main()
+
+        # a global flag (see self.checkReboot)
+        return reboot_required
 
     def takeScreenshot(self):
         """Take a screenshot."""
