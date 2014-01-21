@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 19.5
+Version: 19.6
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -91,6 +91,13 @@ fi
 
 
 %changelog
+* Tue Jan 21 2014 Vratislav Podzimek <vpodzime@redhat.com> 19.6-1
+- Exit the main process correctly even if reboot is required (vpodzime)
+  Resolves: rhbz#903579
+  Resolves: rhbz#1042666
+- Translate the error message if not run as root (vpodzime)
+  Related: rhbz#1044339
+
 * Mon Dec 09 2013 Vratislav Podzimek <vpodzime@redhat.com> 19.5-1
 - Fix missing Loader._needs_network call (#1033696) (alikins@redhat.com)
 
