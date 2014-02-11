@@ -3,7 +3,7 @@
 Summary: Initial system configuration utility
 Name: firstboot
 URL: http://fedoraproject.org/wiki/FirstBoot
-Version: 19.6
+Version: 19.7
 Release: 1%{?dist}
 # This is a Red Hat maintained package which is specific to
 # our distribution.  Thus the source is only available from
@@ -91,6 +91,10 @@ fi
 
 
 %changelog
+* Tue Feb 11 2014 Vratislav Podzimek <vpodzime@redhat.com> 19.7-1
+- Update translations (vpodzime@redhat.com)
+  Resolves: rhbz#1030331
+
 * Tue Jan 21 2014 Vratislav Podzimek <vpodzime@redhat.com> 19.6-1
 - Exit the main process correctly even if reboot is required (vpodzime)
   Resolves: rhbz#903579
